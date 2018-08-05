@@ -95,7 +95,10 @@ class ArticleEditor extends React.Component {
       }
    
      render() {
-         if(this.props.params){
+      //  console.log(this.props.match.params.id);
+         if(this.props.match.params.id){
+            // console.log("Article");
+            // console.log(this.props);
                 if(this.props.article){
                     // Only if it's the first time I get data from rest API, I don't want to to this if I press keys
                     if((this.state.articlecontent == "") && (this.state.api_response == false)){

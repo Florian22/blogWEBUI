@@ -1,28 +1,29 @@
 let defaultState = {};
 
-const mainReducer = (state = defaultState, action ) => {
-    switch(action.type){
-        case "LOAD_ARTICLES": console.log(state); return {
+//const mainReducer = (state = defaultState, action ) => {
+export default (state = defaultState, action ) => {
+switch(action.type){
+        case "LOAD_ARTICLES": return {
             ...state,
             articles : action.payload,
         }; break;
-        case "LOAD_ARTICLE": console.log(state); return {
+        case "LOAD_ARTICLE":  return {
             ...state,
             article : action.payload,
         }; break;
-        case "UPDATE_ARTICLE": console.log(action.payload); return {
+        case "UPDATE_ARTICLE":  return {
             ...state,
         }; break; 
-        case "CREATE_ARTICLE": console.log(action.payload); return {
+        case "CREATE_ARTICLE":  return {
             ...state,
         }; break; 
-        case "UNLOAD_ARTICLE": console.log(state);
+        case "UNLOAD_ARTICLE": 
         if(state.article){
             var newState = {...state};
             delete newState.article;
             return newState;
         }else{ return {...state}} break;
-        case "SIGN_IN": console.log(state); return {
+        case "SIGN_IN":  return {
             ...state,
             currentuser: {
                 _id: action.payload._id,
@@ -31,7 +32,8 @@ const mainReducer = (state = defaultState, action ) => {
                 token: action.payload.token,
             }
         }; break;
-        case "SIGN_OUT": console.log(state);
+        case "SIGN_OUT": 
+        console.log("state");console.log(state);
             if(state.currentuser){
                 var newState = {...state};
                 delete newState.currentuser;
@@ -42,4 +44,4 @@ const mainReducer = (state = defaultState, action ) => {
 
 }
 
-export default mainReducer;
+//export default mainReducer;

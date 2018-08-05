@@ -11,14 +11,15 @@ import * as actionCreators from "../../actions/index";
 
 const divStyle = {
     background: "#fff",
-    boxShadow: "0 1px 4px rgba(0,0,0,.04)",
-    border: "1px solid rgba(0,0,0,.09)",
-    borderRadius: "3px",
-    cursor: "pointer",
+    //boxShadow: "0 1px 4px rgba(0,0,0,.04)",
+    //border: "1px solid rgba(0,0,0,.09)",
+    //borderRadius: "3px",
+    //cursor: "pointer",
     maxWidth: "740px",
     maxHeight: "700px",
     margin: "0 auto",
-    marginBottom: "40px",
+    //marginBottom: "40px",
+    marginBottom: "5px",
     };
 
 const mapStatetoProps = (state) => {
@@ -38,23 +39,59 @@ componentWillMount() {
     }
 
   render() {
-    //console.log(this.props);
+    //console.log(this.props);  
     if(this.props.article){
         if((this.props.currentuser) && (this.props.currentuser.username == this.props.article.user.username)){
         return (
-            <div style={divStyle}>
-                <PostOverview url = {this.props.article.imgURL}/>
-                <PostMetaData post = {this.props.article}/>
-                <PostBody content = {this.props.article.body}/>
-                <Link to={`/editor/${this.props.article._id}`}><span>Edit...</span></Link>
+            <div class ="container">
+                <div class="row justify-content-center">
+                    <div class="col-sm-12 col-md-9"> 
+                    <h2 style={divStyle}>{this.props.article.title}</h2>
+                        <div style={divStyle}>
+                            <PostOverview url = {this.props.article.imgURL} style={{boxShadow: "0 1px 4px rgba(0,0,0,.04)"}}/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-sm-12 col-md-9">
+                        <div class="mb-100"> 
+                            <div style={divStyle}>
+                                <PostBody content = {this.props.article.body}/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-0 col-md-3">
+                            <PostMetaData post = {this.props.article}/>
+                            <div style={{align: "right", display:"inline"}}>
+                                <Link to={`/editor/${this.props.article._id}`} class="btn btn-primary"><span>Edit...</span></Link>
+                            </div>
+                    </div>
+                </div>
             </div>
         );
     }else{
         return (
-            <div style={divStyle}>
-                <PostOverview url = {this.props.article.imgURL}/>
-                <PostMetaData post = {this.props.article}/>
-                <PostBody content = {this.props.article.body}/>
+            <div class ="container">
+                <div class="row justify-content-center">
+                    <div class="col-sm-12 col-md-9"> 
+                    <h2 style={divStyle}>{this.props.article.title}</h2>
+                        <div style={divStyle}>
+                            <PostOverview url = {this.props.article.imgURL} style={{boxShadow: "0 1px 4px rgba(0,0,0,.04)"}}/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-sm-12 col-md-9">
+                        <div class="mb-100"> 
+                            <div style={divStyle}>
+                                <PostBody content = {this.props.article.body}/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-0 col-md-3">
+                            <PostMetaData post = {this.props.article}/>
+                    </div>
+                </div>
             </div>
         );
         }

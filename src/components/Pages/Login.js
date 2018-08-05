@@ -33,7 +33,6 @@ constructor(props) {
       }
 
   render() {
-    console.log(this.props);
     if(this.props.currentuser){
       return <Redirect to={{pathname: '/',}}/>;
     }

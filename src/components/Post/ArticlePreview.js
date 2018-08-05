@@ -12,10 +12,9 @@ const divStyle = {
     border: "1px solid rgba(0,0,0,.09)",
     borderRadius: "3px",
     cursor: "pointer",
-    maxWidth: "740px",
-    maxHeight: "700px",
-    minWidth: "740px",
-    margin: "0 auto",
+    marginLeft: "8%",
+    marginRight: "8%",
+    //margin: "0 auto",
     marginBottom: "40px",
     };
 
@@ -25,10 +24,12 @@ class ArticlePreview extends React.Component {
   render() {
     return (
         <div style={divStyle}>
+        <Link to={`/article/${this.props.post._id}`} style={{ textDecoration: 'none', color:'black' }}>
             <PostOverview url = {this.props.post.imgURL}/>
             <PostMetaData post = {this.props.post}/>
+            <h2 style={{marginTop:"0.1em", marginLeft:"0.2em"}}>{this.props.post.title}</h2>
             <PostBody content = {this.props.post.body.substring(0,constant.articleProperties.bodyPreviewLenght)}/>
-            <Link to={`/article/${this.props.post._id}`}><span>Read more...</span></Link><br></br>
+            </Link>
         </div>
     );
  

@@ -5,64 +5,38 @@ import { Link } from 'react-router-dom';
 import {connect} from "react-redux";
 import * as actionCreators from "../../actions/index";
 
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+
 
 const mapStatetoProps = (state) => {
     return state;
   }
 
 const LoggedOutView = props => {
-  //if (!props.currentUser) {
-      if (true) {
     return (
-      <ul className="nav navbar-nav pull-xs-right">
-        
-        <li className="nav-item">
-          <Link to="/">
-            Feed
-          </Link>
-        </li>
-       
-
-        <li className="nav-item">
-          <Link to="/signin">
-              Sign in
-          </Link>
-        </li>
-
-        <li className="nav-item">
-          <Link to="home">
-            Sign up
-            </Link>
-        </li>
-
-      </ul>
+      <Nav pullRight>
+      <NavItem eventKey={1} href="/">
+          Feed
+      </NavItem>
+      <NavItem eventKey={2} href="/signin">
+          Login
+      </NavItem>
+      }
+    </Nav>
     );
-  }
-  return null;
 };
 
 const LoggedInView = props => {
-  //if (!props.currentUser) {
-      if (true) {
     return (
-      <ul className="nav navbar-nav pull-xs-right">
-        
-        <li className="nav-item">
-          <Link to="/article/new">
-            New
-          </Link>
-        </li>
-
-        <li className="nav-item">
-          <Link to="/logout">
-            LogOut
-            </Link>
-        </li>
-
-      </ul>
+      <Nav pullRight > 
+      <NavItem eventKey={1} href="/new/article">
+          New
+      </NavItem>
+      <NavItem eventKey={2} href="/logout">
+          Logout
+      </NavItem>
+    </Nav>
     );
-  }
-  return null;
 };
 
 var style = {
@@ -72,27 +46,59 @@ var style = {
   textDecoration : "none",
 };
 
+var brandStyle = {
+  paddingTop: "50px!important",
+}
+
 class NavBar extends React.Component {
   render() {
-    console.log(this.props)
+    console.log(this.props);
     if(this.props.currentuser){
-      return (
-          <nav className="navbar navbar-toggleable-md navbar-light bg-faded collapse">
-          <Link to="/" className ="navbar-brand" style={style}>Florian Bonniec</Link>
-              <div class="collapse navbar-collapse" id="navbarNav">  
-                <LoggedInView /*currentUser={this.props.currentUser}*/ />
-                </div>
-          </nav>
+      return(
+        <Navbar inverse collapseOnSelect style={{background:"rgba(0, 0, 0, 0.2)", border: "0", marginBottom: "0", zIndex: "1030"}}>
+    <Navbar.Header>
+      <Navbar.Brand>
+        <Link to="/" style = {{color: "white"}}>Florian Bonniec</Link>
+      </Navbar.Brand>
+      <Navbar.Toggle />
+    </Navbar.Header>
+    <Navbar.Collapse>
+      <Nav  style= {{float: "right"}}>
+        <LoggedInView/>
+      </Nav>
+    </Navbar.Collapse>
+  </Navbar>
       );
     }else{
-      return (
-        <nav className="navbar navbar-toggleable-md navbar-light bg-faded collapse">
-        <Link to="/" className ="navbar-brand" style={style}>Florian Bonniec</Link>
-            <div class="collapse navbar-collapse" id="navbarNav">  
-              <LoggedOutView /*currentUser={this.props.currentUser}*/ />
-              </div>
-        </nav>
-    );
+      return(
+        <Navbar inverse collapseOnSelect fixed-top style={{background:"rgba(0, 0, 0, 0.2)", border: "0", marginBottom: "0", zIndex: "1030"}}>
+    <Navbar.Header>
+      <Navbar.Brand>
+        <Link to="/"  style = {{color: "white"}}>Florian Bonniec</Link>
+      </Navbar.Brand>
+      <Navbar.Toggle />
+    </Navbar.Header>
+    <Navbar.Collapse>
+      <Nav  style= {{float: "right"}}>
+      {/*  <NavItem eventKey={1} href="#">
+          Link
+        </NavItem>
+        <NavItem eventKey={2} href="#">
+          Link
+        </NavItem>
+        <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
+          <MenuItem eventKey={3.1}>Action</MenuItem>
+          <MenuItem eventKey={3.2}>Another action</MenuItem>
+          <MenuItem eventKey={3.3}>Something else here</MenuItem>
+          <MenuItem divider />
+          <MenuItem eventKey={3.3}>Separated link</MenuItem>
+      </NavDropdown>*/}
+      <LoggedOutView/>
+      </Nav>
+      
+    </Navbar.Collapse>
+  </Navbar>
+      );
     }
   }
 }
