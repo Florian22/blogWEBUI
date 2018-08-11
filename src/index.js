@@ -11,7 +11,7 @@ import reducers from './reducers/index'
 //imports for persistent Store, not reset on refresh https://github.com/rt2zz/redux-persist#basic-usage
 import { PersistGate } from 'redux-persist/integration/react'
 import { persistStore, persistReducer } from 'redux-persist'
-import storage from 'redux-persist/lib/storage' 
+import storage from 'redux-persist/es/storage' 
 
 import Layout from "./components/Layout";
 import Home from "./components/Pages/Home";
