@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 module.exports={
 	//target: 'web',
@@ -12,7 +13,7 @@ module.exports={
 	output:{
 		//path: path.join(__dirname,'dist'),
 		//filename:'[name].bundle.js',
-		path: __dirname + "/src/",
+		path: __dirname + "/dist/",
 		filename: "index.bundle.js",
 		publicPath: "/",
 	},
@@ -21,17 +22,6 @@ module.exports={
 		publicPath: '/',
   },
 	module:{
-	/*	loaders: [
-			{
-			  test: /\.jsx?$/,
-			  exclude: /(node_modules|bower_components)/,
-			  loader: 'babel-loader',
-			  query: {
-				presets: ['react', 'es2015', 'stage-0'],
-				plugins: ['react-html-attrs', 'transform-decorators-legacy', 'transform-class-properties'],
-			  }
-			}
-			]*/
 			rules: [
 				{
 					test: /\.css$/,
