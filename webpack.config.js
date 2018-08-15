@@ -20,6 +20,7 @@ module.exports={
 	devServer: {
 		historyApiFallback: true,
 		publicPath: '/',
+		disableHostCheck: true,
   },
 	module:{
 			rules: [
